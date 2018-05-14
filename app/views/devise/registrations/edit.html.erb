@@ -29,7 +29,16 @@
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
+
+    <h2>User image</h2>
+
+    <%= image_tag current_user.image  %>
+
+  
+
+
     <%= f.file_field :image %>
+
   </div>
 
   <div class="actions">

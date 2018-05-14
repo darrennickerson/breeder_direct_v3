@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @animal.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @animal.name %>
+</p>
+
+<p>
+  <strong>Morph:</strong>
+  <%= @animal.morph %>
+</p>
+
+<p>
+  <strong>P date:</strong>
+  <%= @animal.p_date %>
+</p>
+
+<p>
+  <strong>H date:</strong>
+  <%= @animal.h_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @animal.user %>
+</p>
+
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>
