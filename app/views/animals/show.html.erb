@@ -30,5 +30,13 @@
   <%= @animal.user %>
 </p>
 
+<% if @animal.images.attached? %>
+<% @animal.images.each do |image| %>
+<%= image_tag(image) %>
+<% end %>
+<% else %>
+no
+<% end %>
+
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
 <%= link_to 'Back', animals_path %>

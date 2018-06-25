@@ -6,6 +6,10 @@ def delete
   redirect_back(fallback_location: user_edit_path)
 end
 end
+
+def show
+  @user = User.friendly.find(params[:id])
+end
   private
 
   def sign_up_params

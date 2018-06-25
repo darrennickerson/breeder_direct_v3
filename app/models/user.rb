@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          has_one_attached :image
+         has_many :animals
+         
+         extend FriendlyId
+  friendly_id :username, use: :slugged
 
-      
+
 end

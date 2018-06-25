@@ -4,7 +4,7 @@ class AnimalsController < ApplicationController
   # GET /animals
   # GET /animals.json
   def index
-    @animals = Animal.all
+    @animals = current_user.animals.all
   end
 
   # GET /animals/1
@@ -25,9 +25,10 @@ class AnimalsController < ApplicationController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-
+@animal.user_id = current_user.id
     respond_to do |format|
       if @animal.save
+
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @animal }
       else
@@ -64,11 +65,11 @@ class AnimalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_animal
-      @animal = Animal.find(params[:id])
+      @animal = Animal.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:code, :name, :morph, :p_date, :h_date, :user_id)
+      params.require(:animal).permit(:code, :name, :morph, :p_date, :h_date, :user_id, :slug, images:[])
     end
 end

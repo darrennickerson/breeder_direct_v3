@@ -35,11 +35,10 @@
     <%= form.label :h_date %>
     <%= form.date_select :h_date %>
   </div>
+  
+  <%= form.file_field :images, multiple: true %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>
