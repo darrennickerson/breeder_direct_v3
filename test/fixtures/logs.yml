@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fed: false
+  defecation: false
+  cleaned: false
+  length: MyString
+  weight: MyString
+  shed: false
+  fed: false
+  prey_item: MyString
+  refused: false
+
+two:
+  fed: false
+  defecation: false
+  cleaned: false
+  length: MyString
+  weight: MyString
+  shed: false
+  fed: false
+  prey_item: MyString
+  refused: false

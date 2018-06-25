@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  resources :logs
+
   resources :animals
   get 'static/home'
 

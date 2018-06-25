@@ -1,0 +1,62 @@
+<%= form_with(model: log, local: true) do |form| %>
+  <% if log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+      <% log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fed %>
+    <%= form.check_box :fed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :defecation %>
+    <%= form.check_box :defecation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cleaned %>
+    <%= form.check_box :cleaned %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length %>
+    <%= form.text_field :length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shed %>
+    <%= form.check_box :shed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fed %>
+    <%= form.check_box :fed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prey_item %>
+    <%= form.text_field :prey_item %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refused %>
+    <%= form.check_box :refused %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

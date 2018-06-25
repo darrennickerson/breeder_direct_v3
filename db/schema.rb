@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_011226) do
+ActiveRecord::Schema.define(version: 2018_06_25_021242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,21 @@ ActiveRecord::Schema.define(version: 2018_06_25_011226) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.boolean "fed"
+    t.boolean "defecation"
+    t.boolean "cleaned"
+    t.string "length"
+    t.string "weight"
+    t.boolean "shed"
+    t.string "prey_item"
+    t.boolean "refused"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "animal_id"
+    t.index ["animal_id"], name: "index_logs_on_animal_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -91,4 +106,5 @@ ActiveRecord::Schema.define(version: 2018_06_25_011226) do
   end
 
   add_foreign_key "animals", "users"
+  add_foreign_key "logs", "animals"
 end
