@@ -60,8 +60,16 @@ class AnimalsController < ApplicationController
       format.html { redirect_to animals_url, notice: 'Animal was successfully destroyed.' }
       format.json { head :no_content }
     end
+    
+  
   end
-
+  def delete_image_attachment
+    
+    specific =  ActiveStorage::Attachment.find(params[:animal_id])
+    specific.purge
+  
+    redirect_to animals_url
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_animal

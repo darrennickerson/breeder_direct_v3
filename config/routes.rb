@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   
   resources :logs
 
-  resources :animals
+  resources :animals do
+  
+    delete :delete_image_attachment
+  end
   get 'static/home'
 
   devise_for :users, :controllers => { registrations: 'registrations' }

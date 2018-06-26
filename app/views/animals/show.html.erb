@@ -33,6 +33,10 @@
 <% if @animal.images.attached? %>
 <% @animal.images.each do |image| %>
 <%= image_tag(image) %>
+<%= link_to 'Remove', animal_delete_image_attachment_url(image.blob_id, @animal.id),
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+               
 <% end %>
 <% else %>
 no
