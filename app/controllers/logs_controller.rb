@@ -1,10 +1,11 @@
 class LogsController < ApplicationController
   before_action :set_log, only: [:show, :edit, :update, :destroy]
+  before_action :set_animal
 
   # GET /logs
   # GET /logs.json
   def index
-    @logs = Log.all
+    @logs = @animal.logs
   end
 
   # GET /logs/1
@@ -14,7 +15,7 @@ class LogsController < ApplicationController
 
   # GET /logs/new
   def new
-    @log = Log.new
+  @log = Log.new
   end
 
   # GET /logs/1/edit
@@ -25,10 +26,11 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+    @log.animal_id = @animal.id
 
     respond_to do |format|
       if @log.save
-        format.html { redirect_to @log, notice: 'Log was successfully created.' }
+        format.html { redirect_to animal_logs_path(@animal), notice: 'Log was successfully created.' }
         format.json { render :show, status: :created, location: @log }
       else
         format.html { render :new }
@@ -66,6 +68,11 @@ class LogsController < ApplicationController
     def set_log
       @log = Log.find(params[:id])
     end
+    def set_animal
+      @animal = Animal.friendly.find(params[:animal_id])
+    end
+    
+  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params

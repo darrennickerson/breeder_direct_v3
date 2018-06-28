@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :logs
+  
 
   resources :animals do
   
     delete :delete_image_attachment
+    resources :logs
   end
   get 'static/home'
 

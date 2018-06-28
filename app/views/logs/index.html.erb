@@ -30,9 +30,9 @@
         <td><%= log.fed %></td>
         <td><%= log.prey_item %></td>
         <td><%= log.refused %></td>
-        <td><%= link_to 'Show', log %></td>
-        <td><%= link_to 'Edit', edit_log_path(log) %></td>
-        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', animal_log_path(@animal, log) %></td>
+        <td><%= link_to 'Edit', edit_animal_log_path(@animal, log) %></td>
+        <td><%= link_to 'Destroy', animal_log_path(@animal, log), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Log', new_log_path %>
+<%= link_to 'New Log', new_animal_log_path %>
