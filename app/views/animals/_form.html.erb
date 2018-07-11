@@ -1,4 +1,4 @@
-<%= form_with(model: animal, local: true) do |form| %>
+<%= form_with(model: animal, local: true, id: 'animal_creation') do |form| %>
   <% if animal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
@@ -20,11 +20,11 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+<div id="trait_wrapper">
+  <%= form.text_field :traits, multiple: true %>
+<a href="javascript:void(0);" class="add_trait" title="Add field"><%= fa_icon "plus" %></a>
+</div>
 
-  <div class="field">
-    <%= form.label :morph %>
-    <%= form.text_area :morph %>
-  </div>
 
   <div class="field">
     <%= form.label :p_date %>
@@ -35,7 +35,7 @@
     <%= form.label :h_date %>
     <%= form.date_select :h_date %>
   </div>
-  
+
   <%= form.file_field :images, multiple: true %>
 
 

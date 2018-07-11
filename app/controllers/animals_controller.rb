@@ -10,11 +10,13 @@ class AnimalsController < ApplicationController
   # GET /animals/1
   # GET /animals/1.json
   def show
+    @logs = @animal.logs.all
   end
 
   # GET /animals/new
   def new
     @animal = Animal.new
+    @trait = Trait.all
   end
 
   # GET /animals/1/edit
@@ -67,8 +69,9 @@ class AnimalsController < ApplicationController
     
     specific =  ActiveStorage::Attachment.find(params[:animal_id])
     specific.purge
+    animal = Animal.find(params[:animal])
   
-    redirect_to animals_url
+    redirect_to animal_url(animal)
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,6 +81,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:code, :name, :morph, :p_date, :h_date, :user_id, :slug, images:[])
+      params.require(:animal).permit(:code, :name, :p_date, :h_date, :user_id, :slug, images:[], traits:[])
     end
 end

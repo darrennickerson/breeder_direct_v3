@@ -6,8 +6,6 @@ class User < ApplicationRecord
          has_one_attached :image
          has_many :animals
          
-         extend FriendlyId
-  friendly_id :username, use: :slugged
-
+         
 
 end

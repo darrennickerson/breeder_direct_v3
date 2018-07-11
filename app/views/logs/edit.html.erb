@@ -2,5 +2,5 @@
 
 <%= render 'form', log: @log %>
 
-<%= link_to 'Show', @log %> |
-<%= link_to 'Back', logs_path %>
+<%= link_to 'Show', animal_log_path(@animal, @log) %> |
+<%= link_to 'Back', animal_logs_path(@animal, @log) %>

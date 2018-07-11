@@ -12,7 +12,9 @@
 
 <p>
   <strong>Morph:</strong>
-  <%= @animal.morph %>
+  <% @animal.traits.each do |trait| %>
+  <%= trait %>
+  <% end %>
 </p>
 
 <p>
@@ -33,13 +35,21 @@
 <% if @animal.images.attached? %>
 <% @animal.images.each do |image| %>
 <%= image_tag(image) %>
-<%= link_to 'Remove', animal_delete_image_attachment_url(image.blob_id, @animal.id),
+<%= link_to 'Remove', animal_delete_image_attachment_url(image.blob_id, @animal.id, :animal  => @animal.id ),
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
                
 <% end %>
 <% else %>
 no
+<% end %>
+
+<% if @logs.present? %>
+<% @logs.each do |log| %>
+<%= link_to log.id,  animal_log_path(:id => log.id, :animal_id => @animal.slug) %>
+<% end %>
+<% else %>
+No logs yet why not <%= link_to "create", new_animal_log_path(@animal) %>create one for today?  
 <% end %>
 
 <%= link_to 'Edit', edit_animal_path(@animal) %> |

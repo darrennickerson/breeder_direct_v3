@@ -44,7 +44,7 @@ class LogsController < ApplicationController
   def update
     respond_to do |format|
       if @log.update(log_params)
-        format.html { redirect_to @log, notice: 'Log was successfully updated.' }
+        format.html { redirect_to animal_logs_path(@animal), notice: 'Log was successfully updated.' }
         format.json { render :show, status: :ok, location: @log }
       else
         format.html { render :edit }
